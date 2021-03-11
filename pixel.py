@@ -23,9 +23,7 @@ async def start(message, state: FSMContext):
         data[user_id] = {}
         data[user_id]['box'] = game.img
         data[user_id]['xy'] = (game.x, game.y)
-
-    if message.text == '/start':
-        await welcome(message)
+    await welcome(message)
 
 
 @dp.callback_query_handler()
@@ -35,18 +33,19 @@ async def callback_inline(call, state: FSMContext):
         game.img = data[user_id]['box']
         game.x, game.y =data[user_id]['xy']
 
-    if call.data in game.kdoc.values() or call.data == 'refr':
-        getattr(game, call.data)()
-    else:
-        pass
-
+    await joystick(call.data)
     async with state.proxy() as data:
         data[user_id]['box'] = game.img
         data[user_id]['xy'] = (game.x, game.y)
-
     text = game.text
     await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=text, reply_markup=game._keys )
 
+
+async def joystick(data):
+    if data in game.kdoc.values() or data == 'refr':
+        getattr(game, data)()
+    else:
+        pass
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=False)
