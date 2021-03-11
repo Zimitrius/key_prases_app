@@ -9,5 +9,5 @@ async def log_for_mess_handlers(mess:types.Message):
 	for key, value in mess['from']:
 		print(f'{key} - {value}')
 	print()
-	print(date, f'text command = {text}')
+	print(date, f'text command = {text}, user_name = {u_log_name}')
 
