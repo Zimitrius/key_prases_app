@@ -4,8 +4,6 @@ from aiogram import executor
 from loader import dp, bot
 from game_engein import Pixelway
 
-# '⬜️⬛️◼️🔲🔳⬜️🟥🟧🟫🟪🟦🟩🟨➕➖✖️🔘⚪️☑️'
-
 
 game = Pixelway(12,12)
 
@@ -50,5 +48,3 @@ async def callback_inline(call, state: FSMContext):
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=False)
-
-# await message.answer( '⬜️⬛️◼️🔲🔳⬜️🟥🟧🟫🟪🟦🟩🟨➕➖✖️🔘⚪️☑️' )

@@ -124,3 +124,6 @@ class Pixelway:
             print('winnnnn')
             return 'cool you win......!!!!!'
         return   self.head + '\n' + '\n'.join(''.join(self.doc.get(x) for x in e) for e in self.img)
+
+# '⬜️⬛️◼️🔲🔳⬜️🟥🟧🟫🟪🟦🟩🟨➕➖✖️🔘⚪️☑️'
+
