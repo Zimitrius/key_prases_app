@@ -3,12 +3,14 @@ from aiogram.dispatcher import FSMContext
 from aiogram import executor
 from loader import dp, bot
 from game_engein import Pixelway
+from log_info import log_for_mess_handlers
 
 
 game = Pixelway(12,12)
 
 
 async def welcome(message):
+    await log_for_mess_handlers((message))
     await message.answer( game.text, reply_markup=game._keys)
 
 
